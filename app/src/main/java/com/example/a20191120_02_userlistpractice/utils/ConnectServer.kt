@@ -18,7 +18,7 @@ class ConnectServer {
         fun getRequestUserList(context:Context, needActive:String,handler:JsonResponseHandler?){
 
             var client = OkHttpClient()
-            var urlBuilder = HttpUrl.parse("${BASE_URL}/admin/user").newBuilder()
+            var urlBuilder = HttpUrl.parse("${BASE_URL}/admin/user")!!.newBuilder()
 
             urlBuilder.addEncodedQueryParameter("active",needActive)
 
@@ -36,7 +36,7 @@ class ConnectServer {
                 override fun onResponse(call: Call, response: Response) {
 
                     val body = response.body()!!.string()
-                    val jsonObject = JSONObject(body)
+                    val json = JSONObject(body)
                     handler?.onResponse(json)
 
 
