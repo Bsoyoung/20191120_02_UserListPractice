@@ -28,7 +28,41 @@ class ConnectServer {
                 .url(requestUrl)
                 //만약 header가 필요하면 header() 함수 사용.
                 .build()
+            Log.d("가공된GETURL",requestUrl)
 
+            client.newCall(request).enqueue(object : Callback{
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                    val body = response.body()!!.string()
+                    val json = JSONObject(body)
+                    handler?.onResponse(json)
+
+
+                }
+
+            })
+
+        }
+
+
+        fun getRequestCategoryList(context:Context, handler:JsonResponseHandler?){
+
+            var client = OkHttpClient()
+            var urlBuilder = HttpUrl.parse("${BASE_URL}/system/user_category")!!.newBuilder()
+
+            //urlBuilder.addEncodedQueryParameter("active",needActive)
+
+            var requestUrl = urlBuilder.build().toString()
+
+            var request = Request.Builder()
+                .url(requestUrl)
+                //만약 header가 필요하면 header() 함수 사용.
+                .build()
+
+            Log.d("가공된GETURL",requestUrl)
             client.newCall(request).enqueue(object : Callback{
                 override fun onFailure(call: Call, e: IOException) {
                 }

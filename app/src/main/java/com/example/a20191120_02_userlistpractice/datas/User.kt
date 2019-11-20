@@ -1,8 +1,9 @@
 package com.example.a20191120_02_userlistpractice.datas
 
 import org.json.JSONObject
+import java.io.Serializable
 
-class User {
+class User :Serializable{
 
     var loginId = ""
     var name=""
