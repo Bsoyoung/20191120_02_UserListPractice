@@ -28,14 +28,16 @@ class UserAdapter(context: Context, res:Int, list:ArrayList<User>) : ArrayAdapte
 
         var row = tempRow!!
 
-        var logoImg = row.findViewById<ImageView>(R.id.categoryColorImg)
-        var bankNameTxt = row.findViewById<TextView>(R.id.userNameTxt)
+        var categoryColorImg = row.findViewById<ImageView>(R.id.categoryColorImg)
+        var userNameTxt = row.findViewById<TextView>(R.id.userNameTxt)
+        var userIdTxt = row.findViewById<TextView>(R.id.userIdTxt)
 
         var data =mList.get(position)
 
 
       //  Glide.with(mContext).load(data.logo).into(logoImg)
-        bankNameTxt.text = data.name
+        userNameTxt.text = data.name
+        userIdTxt.text = "(${data.loginId})"
 
 
 
