@@ -3,13 +3,18 @@ package com.example.a20191120_02_userlistpractice
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import com.example.a20191120_02_userlistpractice.adapters.CategorySpinnerAdapter
 import com.example.a20191120_02_userlistpractice.datas.Category
+import com.example.a20191120_02_userlistpractice.datas.User
 import com.example.a20191120_02_userlistpractice.utils.ConnectServer
 import kotlinx.android.synthetic.main.activity_user_detail.*
 import org.json.JSONObject
 
 class UserDetailActivity : BaseActivity() {
+
+    var mUser: User? = null
 
     var categoryList = ArrayList<Category>()
     var categorySpinnerAdapter:CategorySpinnerAdapter? = null
@@ -30,6 +35,13 @@ class UserDetailActivity : BaseActivity() {
         categorySelectSpinner.adapter = categorySpinnerAdapter
 
         getCategoryListFromServer()
+
+        mUser= intent.getSerializableExtra("user") as User
+
+        userIdEdt.setText(mUser?.loginId)
+        userNameEdt.setText(mUser?.name)
+
+
     }
 
     fun getCategoryListFromServer(){
@@ -51,8 +63,12 @@ class UserDetailActivity : BaseActivity() {
                     }
 
                     runOnUiThread{
-                        categorySpinnerAdapter?.notifyDataSetChanged()
                         //spinner refresh
+                        categorySpinnerAdapter?.notifyDataSetChanged()
+
+                        var categoryIndex = categoryList.indexOf(mUser?.category)
+                        Log.d("카테고리 인덱스",categoryIndex.toString())
+                        categorySelectSpinner.setSelection(categoryIndex)
                     }
 
                 }
