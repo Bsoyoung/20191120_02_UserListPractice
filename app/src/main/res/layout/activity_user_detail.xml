@@ -55,6 +55,20 @@
         android:id="@+id/createdAtTxt"/>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="만료 일자"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:text="2019-11-30"
+        android:id="@+id/expireAtTxt"/>
+
     <Button
         android:layout_width="300dp"
         android:layout_height="100dp"

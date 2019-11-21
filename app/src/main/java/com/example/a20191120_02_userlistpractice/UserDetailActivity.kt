@@ -42,6 +42,7 @@ class UserDetailActivity : BaseActivity() {
         userNameEdt.setText(mUser?.name)
 
         createdAtTxt.text = mUser?.getFormattedCreatedAt()
+        expireAtTxt.text = mUser?.getExpireDateString()
 
     }
 
