@@ -40,6 +40,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/categorySelectSpinner"/>
 
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/test_drawable_xml"/>
+
+
 
 
 </LinearLayout>
